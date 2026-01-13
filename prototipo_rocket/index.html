@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bros Club Barber School | Curso Profissional de Barbearia</title>
+    <meta
+      name="description"
+      content="Transforme sua paixão em profissão lucrativa. Curso profissional de barbearia do zero ao avançado. Turmas limitadas."
+    />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="css/main.css" />
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script
+      type="module"
+      async
+      src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fbarberscho4386back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.12"
+    ></script>
+    <script
+      type="module"
+      defer
+      src="https://static.rocket.new/rocket-shot.js?v=0.0.2"
+    ></script>
+  </head>
+  <body class="bg-dark-900 text-light-50 antialiased overflow-x-hidden">
+    <!-- Noise Texture Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Toast Notification -->
+    <div
+      id="toast"
+      class="fixed top-24 right-6 z-[100] transform translate-x-full transition-transform duration-300 bg-gold-500 text-dark-900 px-6 py-4 rounded shadow-2xl flex items-center gap-3"
+    >
+      <i data-lucide="check-circle" class="w-5 h-5"></i>
+      <span
+        class="text-sm font-medium uppercase tracking-wide"
+        id="toast-message"
+        >Mensagem enviada!</span
+      >
+    </div>
+
+    <!-- Sticky Navigation -->
+    <nav
+      class="fixed top-0 w-full z-[60] border-b border-white/10 bg-dark-900/80 backdrop-blur-md transition-all duration-300"
+    >
+      <div
+        class="flex justify-between items-center h-20 px-6 md:px-12 max-w-full mx-auto"
+      >
+        <!-- Logo -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div
+            class="w-10 h-10 bg-gold-500 text-dark-900 flex items-center justify-center font-display font-bold text-xl rounded"
+          >
+            BC
+          </div>
+          <span
+            class="font-display font-semibold text-lg tracking-tight uppercase hidden md:block group-hover:text-gold-500 transition-colors"
+          >
+            Bros Club
+          </span>
+        </a>
+
+        <!-- Right Controls -->
+        <div class="flex items-center gap-4">
+          <a
+            href="#contato"
+            class="hidden md:flex items-center gap-2 text-xs uppercase font-medium tracking-widest hover:text-gold-500 transition-colors"
+          >
+            <i data-lucide="calendar" class="w-4 h-4"></i>
+            <span>Agende Visita</span>
+          </a>
+          <button
+            onclick="toggleMenu()"
+            class="flex items-center gap-2 uppercase text-xs font-medium tracking-widest border border-white/20 px-4 py-2 rounded-full hover:bg-gold-500 hover:text-dark-900 hover:border-gold-500 transition-all"
+          >
+            <span>Menu</span>
+          </button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Full Screen Menu Overlay -->
+    <div
+      id="menu-overlay"
+      class="fixed inset-0 bg-dark-900 z-[70] transform translate-y-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col pt-32 px-6 pb-12 overflow-y-auto"
+    >
+      <div
+        class="border-t border-white/20 w-full max-w-7xl mx-auto flex-1 flex flex-col justify-center gap-2"
+      >
+        <a
+          href="#curso"
+          onclick="toggleMenu()"
+          class="group flex items-center justify-between py-4 border-b border-white/10"
+        >
+          <span
+            class="font-display text-5xl md:text-8xl uppercase text-white group-hover:text-gold-500 transition-colors"
+            >O Curso</span
+          >
+          <i
+            data-lucide="arrow-right"
+            class="text-white w-8 h-8 md:w-16 md:h-16 opacity-0 group-hover:opacity-100 -translate-x-10 group-hover:translate-x-0 transition-all duration-500"
+          ></i>
+        </a>
+        <a
+          href="#depoimentos"
+          onclick="toggleMenu()"
+          class="group flex items-center justify-between py-4 border-b border-white/10"
+        >
+          <span
+            class="font-display text-5xl md:text-8xl uppercase text-white group-hover:text-gold-500 transition-colors"
+            >Alunos</span
+          >
+          <i
+            data-lucide="arrow-right"
+            class="text-white w-8 h-8 md:w-16 md:h-16 opacity-0 group-hover:opacity-100 -translate-x-10 group-hover:translate-x-0 transition-all duration-500"
+          ></i>
+        </a>
+        <a
+          href="#galeria"
+          onclick="toggleMenu()"
+          class="group flex items-center justify-between py-4 border-b border-white/10"
+        >
+          <span
+            class="font-display text-5xl md:text-8xl uppercase text-white group-hover:text-gold-500 transition-colors"
+            >Trabalhos</span
+          >
+          <i
+            data-lucide="arrow-right"
+            class="text-white w-8 h-8 md:w-16 md:h-16 opacity-0 group-hover:opacity-100 -translate-x-10 group-hover:translate-x-0 transition-all duration-500"
+          ></i>
+        </a>
+        <a
+          href="#contato"
+          onclick="toggleMenu()"
+          class="group flex items-center justify-between py-4 border-b border-white/10"
+        >
+          <span
+            class="font-display text-5xl md:text-8xl uppercase text-white group-hover:text-gold-500 transition-colors"
+            >Contato</span
+          >
+          <i
+            data-lucide="arrow-right"
+            class="text-white w-8 h-8 md:w-16 md:h-16 opacity-0 group-hover:opacity-100 -translate-x-10 group-hover:translate-x-0 transition-all duration-500"
+          ></i>
+        </a>
+      </div>
+      <div
+        class="max-w-7xl mx-auto w-full flex justify-between items-end mt-12"
+      >
+        <p class="text-white/50 text-xs uppercase tracking-widest">
+          Formando Profissionais
+        </p>
+        <button
+          onclick="toggleMenu()"
+          class="text-white uppercase text-xs tracking-widest border border-white/30 px-6 py-3 rounded-full hover:bg-gold-500 hover:text-dark-900 hover:border-gold-500 transition-colors"
+        >
+          Fechar
+        </button>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Hero Section -->
+      <section
+        class="min-h-screen pt-32 pb-12 px-6 md:px-12 flex flex-col justify-between border-b border-white/10 relative overflow-hidden"
+      >
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+          <img
+            src="https://images.unsplash.com/photo-1554841313-a1ecaf037527"
+            alt="Barbeiro profissional cortando cabelo em barbearia moderna"
+            class="w-full h-full object-cover grayscale opacity-20"
+          />
+          <div
+            class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/80 to-transparent"
+          ></div>
+        </div>
+
+        <div class="max-w-full relative z-10">
+          <div
+            class="inline-flex items-center gap-2 bg-gold-500/10 border border-gold-500/30 px-4 py-2 rounded-full mb-8"
+          >
+            <span class="relative flex h-2 w-2">
+              <span
+                class="animate-ping absolute inline-flex h-full w-full rounded-full bg-gold-500 opacity-75"
+              ></span>
+              <span
+                class="relative inline-flex rounded-full h-2 w-2 bg-gold-500"
+              ></span>
+            </span>
+            <span
+              class="text-xs uppercase tracking-widest font-medium text-gold-500"
+              >Vagas Abertas Agora</span
+            >
+          </div>
+
+          <h1
+            class="font-display text-[13vw] md:text-[10vw] lg:text-[8rem] leading-[0.9] tracking-tighter uppercase font-bold mb-6"
+          >
+            <span class="reveal-text block"
+              ><span class="reveal-inner" style="animation-delay: 0.1s"
+                >Transforme</span
+              ></span
+            >
+            <span class="reveal-text block"
+              ><span
+                class="reveal-inner text-gold-500"
+                style="animation-delay: 0.2s"
+                >Sua Paixão</span
+              ></span
+            >
+            <span class="reveal-text block"
+              ><span class="reveal-inner" style="animation-delay: 0.3s"
+                >Em Profissão</span
+              ></span
+            >
+          </h1>
+
+          <p
+            class="text-xl md:text-2xl leading-relaxed opacity-80 max-w-2xl mb-8 font-light"
+          >
+            Curso profissional de barbearia
+            <span class="text-gold-500 font-medium">do zero ao avançado</span>.
+            Aprenda com quem está no mercado.
+          </p>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 items-end relative z-10"
+        >
+          <div class="flex flex-col gap-4">
+            <a
+              href="#contato"
+              class="group inline-flex items-center justify-center gap-3 bg-gold-500 text-dark-900 px-8 py-4 rounded-full font-bold uppercase text-sm tracking-widest hover:bg-gold-400 transition-all shadow-lg hover:shadow-gold-500/50"
+            >
+              <span>Quero Garantir Minha Vaga</span>
+              <i
+                data-lucide="arrow-right"
+                class="w-5 h-5 group-hover:translate-x-1 transition-transform"
+              ></i>
+            </a>
+            <div
+              class="flex items-center gap-3 text-xs uppercase tracking-widest opacity-60"
+            >
+              <i data-lucide="users" class="w-4 h-4"></i>
+              <span>Turmas Limitadas a 12 Alunos</span>
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-2 border-l border-white/20 pl-6">
+            <span class="text-xs uppercase tracking-widest opacity-50"
+              >Duração</span
+            >
+            <span class="text-2xl font-display font-semibold">6 Semanas</span>
+            <span class="text-sm opacity-70">Intensivo Profissional</span>
+          </div>
+
+          <div class="flex md:justify-end">
+            <a
+              href="#sobre"
+              class="group flex items-center justify-center w-20 h-20 rounded-full border border-white/20 hover:bg-gold-500 hover:border-gold-500 hover:text-dark-900 transition-all"
+            >
+              <i data-lucide="arrow-down" class="w-6 h-6 animate-bounce"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Marquee -->
+      <div
+        class="py-6 md:py-8 border-b border-white/10 overflow-hidden bg-gold-500 text-dark-900"
+      >
+        <div class="animate-marquee whitespace-nowrap">
+          <span
+            class="text-3xl md:text-6xl font-display uppercase font-bold px-8 tracking-tight"
+            >Cortes Clássicos • Fade/Degradê • Barboterapia • Visagismo •
+            Pigmentação • Gestão •</span
+          >
+          <span
+            class="text-3xl md:text-6xl font-display uppercase font-bold px-8 tracking-tight"
+            >Cortes Clássicos • Fade/Degradê • Barboterapia • Visagismo •
+            Pigmentação • Gestão •</span
+          >
+        </div>
+      </div>
+
+      <!-- Sobre a Escola -->
+      <section
+        id="sobre"
+        class="border-b border-white/10 py-16 md:py-24 px-6 md:px-12"
+      >
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        >
+          <div>
+            <span
+              class="text-xs uppercase tracking-widest opacity-50 block mb-6"
+              >(Sobre a Bros Club)</span
+            >
+            <h2
+              class="font-display text-4xl md:text-6xl uppercase tracking-tighter mb-8"
+            >
+              Mais que uma escola.<br />
+              <span class="text-gold-500">Uma comunidade.</span>
+            </h2>
+            <div class="space-y-6 text-lg leading-relaxed opacity-80">
+              <p>
+                A
+                <strong class="text-gold-500 font-semibold"
+                  >Bros Club Barber School</strong
+                >
+                nasceu da paixão de profissionais que vivem e respiram a arte da
+                barbearia. Nossos instrutores não apenas ensinam — eles estão
+                ativos no mercado, atendendo clientes reais todos os dias.
+              </p>
+              <p>
+                Nossa metodologia é
+                <strong>prática, direta e sem enrolação</strong>. Você aprende
+                fazendo, desde o primeiro dia. Infraestrutura moderna, materiais
+                profissionais inclusos e um ambiente que simula uma barbearia
+                real.
+              </p>
+              <p class="text-gold-500 font-medium">
+                Aqui você não aprende apenas técnicas. Você aprende a construir
+                uma carreira lucrativa e sustentável.
+              </p>
+            </div>
+          </div>
+          <div class="relative">
+            <img
+              src="https://images.unsplash.com/photo-1629195352884-1ec52b94ffa7"
+              alt="Interior moderno da Bros Club Barber School com cadeiras de barbeiro profissionais"
+              class="w-full h-[500px] object-cover rounded-lg shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"
+            />
+            <div
+              class="absolute -bottom-6 -right-6 bg-gold-500 text-dark-900 p-6 rounded-lg shadow-xl"
+            >
+              <div class="text-5xl font-display font-bold">500+</div>
+              <div class="text-sm uppercase tracking-widest font-medium">
+                Alunos Formados
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grade Curricular -->
+      <section
+        id="curso"
+        class="border-b border-white/10 py-16 md:py-24 px-6 md:px-12 bg-dark-800"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16">
+            <span
+              class="text-xs uppercase tracking-widest opacity-50 block mb-6"
+              >(O Que Você Vai Aprender)</span
+            >
+            <h2
+              class="font-display text-4xl md:text-6xl uppercase tracking-tighter mb-6"
+            >
+              Grade Curricular<br />
+              <span class="text-gold-500">Completa e Atualizada</span>
+            </h2>
+            <p class="text-lg opacity-70 max-w-2xl mx-auto">
+              Do básico ao avançado. Técnicas clássicas e tendências modernas.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div
+              class="group border border-white/10 p-8 rounded-lg hover:border-gold-500 hover:bg-dark-900 transition-all duration-300 cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors"
+              >
+                <i
+                  data-lucide="scissors"
+                  class="w-6 h-6 text-gold-500 group-hover:text-dark-900"
+                ></i>
+              </div>
+              <h3
+                class="font-display text-2xl uppercase tracking-tight mb-4 group-hover:text-gold-500 transition-colors"
+              >
+                Cortes Clássicos
+              </h3>
+              <p class="text-sm leading-relaxed opacity-70 mb-4">
+                Fundamentos essenciais. Tesoura, pente, máquina. Técnicas
+                atemporais que todo barbeiro precisa dominar.
+              </p>
+              <span
+                class="text-xs uppercase tracking-widest text-gold-500 font-medium"
+                >Módulo 1</span
+              >
+            </div>
+
+            <!-- Card 2 -->
+            <div
+              class="group border border-white/10 p-8 rounded-lg hover:border-gold-500 hover:bg-dark-900 transition-all duration-300 cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors"
+              >
+                <i
+                  data-lucide="trending-up"
+                  class="w-6 h-6 text-gold-500 group-hover:text-dark-900"
+                ></i>
+              </div>
+              <h3
+                class="font-display text-2xl uppercase tracking-tight mb-4 group-hover:text-gold-500 transition-colors"
+              >
+                Fade / Degradê
+              </h3>
+              <p class="text-sm leading-relaxed opacity-70 mb-4">
+                A técnica mais requisitada do mercado. Low fade, mid fade, high
+                fade. Transições perfeitas e simétricas.
+              </p>
+              <span
+                class="text-xs uppercase tracking-widest text-gold-500 font-medium"
+                >Módulo 2</span
+              >
+            </div>
+
+            <!-- Card 3 -->
+            <div
+              class="group border border-white/10 p-8 rounded-lg hover:border-gold-500 hover:bg-dark-900 transition-all duration-300 cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors"
+              >
+                <i
+                  data-lucide="sparkles"
+                  class="w-6 h-6 text-gold-500 group-hover:text-dark-900"
+                ></i>
+              </div>
+              <h3
+                class="font-display text-2xl uppercase tracking-tight mb-4 group-hover:text-gold-500 transition-colors"
+              >
+                Barboterapia
+              </h3>
+              <p class="text-sm leading-relaxed opacity-70 mb-4">
+                Barba e bigode profissionais. Aparar, modelar, finalizar.
+                Produtos corretos e técnicas de acabamento premium.
+              </p>
+              <span
+                class="text-xs uppercase tracking-widest text-gold-500 font-medium"
+                >Módulo 3</span
+              >
+            </div>
+
+            <!-- Card 4 -->
+            <div
+              class="group border border-white/10 p-8 rounded-lg hover:border-gold-500 hover:bg-dark-900 transition-all duration-300 cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors"
+              >
+                <i
+                  data-lucide="scan-face"
+                  class="w-6 h-6 text-gold-500 group-hover:text-dark-900"
+                ></i>
+              </div>
+              <h3
+                class="font-display text-2xl uppercase tracking-tight mb-4 group-hover:text-gold-500 transition-colors"
+              >
+                Visagismo
+              </h3>
+              <p class="text-sm leading-relaxed opacity-70 mb-4">
+                Leitura de rosto. Indicar cortes que valorizam cada tipo de
+                cliente. Consultoria profissional e assertiva.
+              </p>
+              <span
+                class="text-xs uppercase tracking-widest text-gold-500 font-medium"
+                >Módulo 4</span
+              >
+            </div>
+
+            <!-- Card 5 -->
+            <div
+              class="group border border-white/10 p-8 rounded-lg hover:border-gold-500 hover:bg-dark-900 transition-all duration-300 cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors"
+              >
+                <i
+                  data-lucide="palette"
+                  class="w-6 h-6 text-gold-500 group-hover:text-dark-900"
+                ></i>
+              </div>
+              <h3
+                class="font-display text-2xl uppercase tracking-tight mb-4 group-hover:text-gold-500 transition-colors"
+              >
+                Pigmentação
+              </h3>
+              <p class="text-sm leading-relaxed opacity-70 mb-4">
+                Disfarce de cabelos brancos, desenhos e efeitos especiais.
+                Técnica adicional que aumenta seu ticket médio.
+              </p>
+              <span
+                class="text-xs uppercase tracking-widest text-gold-500 font-medium"
+                >Módulo 5</span
+              >
+            </div>
+
+            <!-- Card 6 -->
+            <div
+              class="group border border-white/10 p-8 rounded-lg hover:border-gold-500 hover:bg-dark-900 transition-all duration-300 cursor-pointer"
+            >
+              <div
+                class="w-12 h-12 bg-gold-500/10 rounded-full flex items-center justify-center mb-6 group-hover:bg-gold-500 transition-colors"
+              >
+                <i
+                  data-lucide="briefcase"
+                  class="w-6 h-6 text-gold-500 group-hover:text-dark-900"
+                ></i>
+              </div>
+              <h3
+                class="font-display text-2xl uppercase tracking-tight mb-4 group-hover:text-gold-500 transition-colors"
+              >
+                Gestão de Barbearia
+              </h3>
+              <p class="text-sm leading-relaxed opacity-70 mb-4">
+                Precificação, marketing, atendimento, fidelização. Como
+                transformar habilidade em negócio lucrativo.
+              </p>
+              <span
+                class="text-xs uppercase tracking-widest text-gold-500 font-medium"
+                >Módulo 6</span
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Vídeos -->
+      <section
+        id="videos"
+        class="border-b border-white/10 py-16 md:py-24 px-6 md:px-12"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16">
+            <span
+              class="text-xs uppercase tracking-widest opacity-50 block mb-6"
+              >(Veja Como Funciona)</span
+            >
+            <h2
+              class="font-display text-4xl md:text-6xl uppercase tracking-tighter mb-6"
+            >
+              Aulas Práticas<br />
+              <span class="text-gold-500">Em Ambiente Real</span>
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Video 1 -->
+            <div
+              class="relative aspect-video bg-dark-800 rounded-lg overflow-hidden group cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_19b0a0058-1768333619997.png"
+                alt="Instrutor demonstrando técnica de fade em modelo durante aula prática"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"
+              ></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                >
+                  <i data-lucide="play" class="w-8 h-8 text-dark-900 ml-1"></i>
+                </div>
+              </div>
+              <div class="absolute bottom-0 left-0 p-6 w-full">
+                <h3
+                  class="font-display text-xl uppercase tracking-tight text-white"
+                >
+                  Técnica de Fade Profissional
+                </h3>
+                <p class="text-sm opacity-70 text-white">
+                  Demonstração completa passo a passo
+                </p>
+              </div>
+            </div>
+
+            <!-- Video 2 -->
+            <div
+              class="relative aspect-video bg-dark-800 rounded-lg overflow-hidden group cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1669202785981-2e6535cc507a"
+                alt="Aluno praticando corte em modelo supervisionado por instrutor"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"
+              ></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                >
+                  <i data-lucide="play" class="w-8 h-8 text-dark-900 ml-1"></i>
+                </div>
+              </div>
+              <div class="absolute bottom-0 left-0 p-6 w-full">
+                <h3
+                  class="font-display text-xl uppercase tracking-tight text-white"
+                >
+                  Alunos em Ação
+                </h3>
+                <p class="text-sm opacity-70 text-white">
+                  Prática supervisionada com modelos reais
+                </p>
+              </div>
+            </div>
+
+            <!-- Video 3 -->
+            <div
+              class="relative aspect-video bg-dark-800 rounded-lg overflow-hidden group cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_1149f1953-1768211128904.png"
+                alt="Aula de barboterapia mostrando técnicas de modelagem de barba"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"
+              ></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                >
+                  <i data-lucide="play" class="w-8 h-8 text-dark-900 ml-1"></i>
+                </div>
+              </div>
+              <div class="absolute bottom-0 left-0 p-6 w-full">
+                <h3
+                  class="font-display text-xl uppercase tracking-tight text-white"
+                >
+                  Barboterapia Avançada
+                </h3>
+                <p class="text-sm opacity-70 text-white">
+                  Modelagem e finalização profissional
+                </p>
+              </div>
+            </div>
+
+            <!-- Video 4 -->
+            <div
+              class="relative aspect-video bg-dark-800 rounded-lg overflow-hidden group cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_1e50cc80f-1764697772564.png"
+                alt="Tour pela infraestrutura moderna da escola com equipamentos profissionais"
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"
+              ></div>
+              <div class="absolute inset-0 flex items-center justify-center">
+                <div
+                  class="w-16 h-16 bg-gold-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform"
+                >
+                  <i data-lucide="play" class="w-8 h-8 text-dark-900 ml-1"></i>
+                </div>
+              </div>
+              <div class="absolute bottom-0 left-0 p-6 w-full">
+                <h3
+                  class="font-display text-xl uppercase tracking-tight text-white"
+                >
+                  Infraestrutura Completa
+                </h3>
+                <p class="text-sm opacity-70 text-white">
+                  Conheça nossa estrutura profissional
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Depoimentos -->
+      <section
+        id="depoimentos"
+        class="border-b border-white/10 py-16 md:py-24 px-6 md:px-12 bg-dark-800"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16">
+            <span
+              class="text-xs uppercase tracking-widest opacity-50 block mb-6"
+              >(Histórias de Sucesso)</span
+            >
+            <h2
+              class="font-display text-4xl md:text-6xl uppercase tracking-tighter mb-6"
+            >
+              Quem Passou<br />
+              <span class="text-gold-500">Por Aqui</span>
+            </h2>
+          </div>
+
+          <div class="relative">
+            <div
+              id="testimonials-container"
+              class="grid grid-cols-1 md:grid-cols-3 gap-8"
+            >
+              <!-- Testimonial 1 -->
+              <div
+                class="testimonial-card bg-dark-900 border border-white/10 p-8 rounded-lg"
+              >
+                <div class="flex items-center gap-4 mb-6">
+                  <img
+                    src="https://i.pravatar.cc/150?img=12"
+                    alt="Foto de perfil de Rafael Silva, aluno formado"
+                    class="w-16 h-16 rounded-full object-cover border-2 border-gold-500"
+                  />
+                  <div>
+                    <h4 class="font-display text-lg uppercase tracking-tight">
+                      Rafael Silva
+                    </h4>
+                    <span
+                      class="text-xs uppercase tracking-widest text-gold-500"
+                      >Aluno Formado 2023</span
+                    >
+                  </div>
+                </div>
+                <p class="text-sm leading-relaxed opacity-80 mb-6">
+                  "Entrei sem experiência nenhuma. Hoje tenho minha própria
+                  barbearia e agenda lotada. O curso mudou minha vida.
+                  Professores incríveis, ensinam de verdade."
+                </p>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="award" class="w-4 h-4 text-gold-500"></i>
+                  <span class="text-xs uppercase tracking-widest opacity-60"
+                    >Certificado Profissional</span
+                  >
+                </div>
+              </div>
+
+              <!-- Testimonial 2 -->
+              <div
+                class="testimonial-card bg-dark-900 border border-white/10 p-8 rounded-lg"
+              >
+                <div class="flex items-center gap-4 mb-6">
+                  <img
+                    src="https://i.pravatar.cc/150?img=33"
+                    alt="Foto de perfil de Lucas Mendes, aluno formado"
+                    class="w-16 h-16 rounded-full object-cover border-2 border-gold-500"
+                  />
+                  <div>
+                    <h4 class="font-display text-lg uppercase tracking-tight">
+                      Lucas Mendes
+                    </h4>
+                    <span
+                      class="text-xs uppercase tracking-widest text-gold-500"
+                      >Aluno Formado 2024</span
+                    >
+                  </div>
+                </div>
+                <p class="text-sm leading-relaxed opacity-80 mb-6">
+                  "Já era barbeiro, mas vim pra me profissionalizar. Aprendi
+                  técnicas que triplicaram meu faturamento. Vale cada centavo.
+                  Ambiente top, galera unida."
+                </p>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="award" class="w-4 h-4 text-gold-500"></i>
+                  <span class="text-xs uppercase tracking-widest opacity-60"
+                    >Certificado Profissional</span
+                  >
+                </div>
+              </div>
+
+              <!-- Testimonial 3 -->
+              <div
+                class="testimonial-card bg-dark-900 border border-white/10 p-8 rounded-lg"
+              >
+                <div class="flex items-center gap-4 mb-6">
+                  <img
+                    src="https://i.pravatar.cc/150?img=68"
+                    alt="Foto de perfil de Thiago Costa, aluno formado"
+                    class="w-16 h-16 rounded-full object-cover border-2 border-gold-500"
+                  />
+                  <div>
+                    <h4 class="font-display text-lg uppercase tracking-tight">
+                      Thiago Costa
+                    </h4>
+                    <span
+                      class="text-xs uppercase tracking-widest text-gold-500"
+                      >Aluno Formado 2024</span
+                    >
+                  </div>
+                </div>
+                <p class="text-sm leading-relaxed opacity-80 mb-6">
+                  "Curso completo, sem enrolação. Saí daqui pronto pra
+                  trabalhar. Hoje atendo em salão conceituado e já tenho
+                  clientes fixos. Recomendo demais!"
+                </p>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="award" class="w-4 h-4 text-gold-500"></i>
+                  <span class="text-xs uppercase tracking-widest opacity-60"
+                    >Certificado Profissional</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Galeria de Trabalhos -->
+      <section
+        id="galeria"
+        class="border-b border-white/10 py-16 md:py-24 px-6 md:px-12"
+      >
+        <div class="max-w-7xl mx-auto">
+          <div class="text-center mb-16">
+            <span
+              class="text-xs uppercase tracking-widest opacity-50 block mb-6"
+              >(Portfólio dos Alunos)</span
+            >
+            <h2
+              class="font-display text-4xl md:text-6xl uppercase tracking-tighter mb-6"
+            >
+              Trabalhos<br />
+              <span class="text-gold-500">Profissionais</span>
+            </h2>
+            <p class="text-lg opacity-70 max-w-2xl mx-auto">
+              Resultados reais de quem aprendeu aqui. Qualidade e técnica em
+              cada corte.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+            <!-- Gallery Item 1 -->
+            <div
+              class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_127f0d816-1766052098136.png"
+                alt="Corte fade profissional executado por aluno em modelo"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <div class="absolute bottom-0 left-0 p-4 w-full">
+                  <span class="text-xs uppercase tracking-widest text-gold-500"
+                    >Fade Clássico</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery Item 2 -->
+            <div
+              class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_13e81da73-1767898663300.png"
+                alt="Barba modelada e finalizada por aluno formado"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <div class="absolute bottom-0 left-0 p-4 w-full">
+                  <span class="text-xs uppercase tracking-widest text-gold-500"
+                    >Barboterapia</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery Item 3 -->
+            <div
+              class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_11b136b4c-1768333617673.png"
+                alt="Degradê moderno com transição perfeita"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <div class="absolute bottom-0 left-0 p-4 w-full">
+                  <span class="text-xs uppercase tracking-widest text-gold-500"
+                    >Degradê</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery Item 4 -->
+            <div
+              class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_1c49af72d-1768162102781.png"
+                alt="Corte social executado com precisão"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <div class="absolute bottom-0 left-0 p-4 w-full">
+                  <span class="text-xs uppercase tracking-widest text-gold-500"
+                    >Social</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery Item 5 -->
+            <div
+              class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_11e23fac2-1764641430459.png"
+                alt="Corte moderno com desenho lateral"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <div class="absolute bottom-0 left-0 p-4 w-full">
+                  <span class="text-xs uppercase tracking-widest text-gold-500"
+                    >Design</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery Item 6 -->
+            <div
+              class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_131f5e8ca-1768333618609.png"
+                alt="Pigmentação capilar profissional"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <div class="absolute bottom-0 left-0 p-4 w-full">
+                  <span class="text-xs uppercase tracking-widest text-gold-500"
+                    >Pigmentação</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery Item 7 -->
+            <div
+              class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://images.unsplash.com/photo-1605438622882-48e393508567"
+                alt="Finalização com máquina de acabamento"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <div class="absolute bottom-0 left-0 p-4 w-full">
+                  <span class="text-xs uppercase tracking-widest text-gold-500"
+                    >Acabamento</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Gallery Item 8 -->
+            <div
+              class="gallery-item group relative aspect-square overflow-hidden rounded-lg cursor-pointer border border-white/10 hover:border-gold-500 transition-colors"
+            >
+              <img
+                src="https://img.rocket.new/generatedImages/rocket_gen_img_1e5aa8736-1764782365577.png"
+                alt="Corte undercut moderno"
+                class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700"
+              />
+              <div
+                class="absolute inset-0 bg-gradient-to-t from-dark-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity"
+              >
+                <div class="absolute bottom-0 left-0 p-4 w-full">
+                  <span class="text-xs uppercase tracking-widest text-gold-500"
+                    >Undercut</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-12">
+            <a
+              href="https://instagram.com/brosclub"
+              target="_blank"
+              class="inline-flex items-center gap-3 text-sm uppercase tracking-widest font-medium hover:text-gold-500 transition-colors border-b border-white/20 hover:border-gold-500 pb-1"
+            >
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+              <span>Veja Mais no Instagram</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section
+        id="faq"
+        class="border-b border-white/10 py-16 md:py-24 px-6 md:px-12 bg-dark-800"
+      >
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16">
+            <span
+              class="text-xs uppercase tracking-widest opacity-50 block mb-6"
+              >(Dúvidas Frequentes)</span
+            >
+            <h2
+              class="font-display text-4xl md:text-6xl uppercase tracking-tighter mb-6"
+            >
+              Perguntas<br />
+              <span class="text-gold-500">& Respostas</span>
+            </h2>
+          </div>
+
+          <div class="space-y-4">
+            <!-- FAQ Item 1 -->
+            <details
+              class="faq-item group border border-white/10 rounded-lg overflow-hidden"
+            >
+              <summary
+                class="flex items-center justify-between p-6 cursor-pointer hover:bg-dark-900 transition-colors"
+              >
+                <span
+                  class="font-display text-lg uppercase tracking-tight group-open:text-gold-500 transition-colors"
+                >
+                  O curso inclui kit de materiais?
+                </span>
+                <i
+                  data-lucide="chevron-down"
+                  class="w-5 h-5 transition-transform group-open:rotate-180"
+                ></i>
+              </summary>
+              <div class="p-6 pt-0 text-sm leading-relaxed opacity-80">
+                Sim! Todos os alunos recebem um kit profissional completo
+                incluindo: tesoura profissional, pente de corte, navalha,
+                máquina de acabamento, capa e produtos para prática. Tudo que
+                você precisa para começar está incluso no valor do curso.
+              </div>
+            </details>
+
+            <!-- FAQ Item 2 -->
+            <details
+              class="faq-item group border border-white/10 rounded-lg overflow-hidden"
+            >
+              <summary
+                class="flex items-center justify-between p-6 cursor-pointer hover:bg-dark-900 transition-colors"
+              >
+                <span
+                  class="font-display text-lg uppercase tracking-tight group-open:text-gold-500 transition-colors"
+                >
+                  Quais são os horários das aulas?
+                </span>
+                <i
+                  data-lucide="chevron-down"
+                  class="w-5 h-5 transition-transform group-open:rotate-180"
+                ></i>
+              </summary>
+              <div class="p-6 pt-0 text-sm leading-relaxed opacity-80">
+                Oferecemos turmas nos períodos manhã (9h às 12h), tarde (14h às
+                17h) e noite (19h às 22h). As aulas acontecem de segunda a
+                sexta-feira. Você escolhe o horário que melhor se encaixa na sua
+                rotina no momento da matrícula.
+              </div>
+            </details>
+
+            <!-- FAQ Item 3 -->
+            <details
+              class="faq-item group border border-white/10 rounded-lg overflow-hidden"
+            >
+              <summary
+                class="flex items-center justify-between p-6 cursor-pointer hover:bg-dark-900 transition-colors"
+              >
+                <span
+                  class="font-display text-lg uppercase tracking-tight group-open:text-gold-500 transition-colors"
+                >
+                  O certificado é reconhecido?
+                </span>
+                <i
+                  data-lucide="chevron-down"
+                  class="w-5 h-5 transition-transform group-open:rotate-180"
+                ></i>
+              </summary>
+              <div class="p-6 pt-0 text-sm leading-relaxed opacity-80">
+                Sim! Nosso certificado é reconhecido nacionalmente e validado
+                por órgãos competentes. Ele comprova sua formação profissional e
+                pode ser utilizado para abertura de CNPJ, contratações e
+                participação em eventos do setor. Você recebe o certificado
+                digital imediatamente após a conclusão.
+              </div>
+            </details>
+
+            <!-- FAQ Item 4 -->
+            <details
+              class="faq-item group border border-white/10 rounded-lg overflow-hidden"
+            >
+              <summary
+                class="flex items-center justify-between p-6 cursor-pointer hover:bg-dark-900 transition-colors"
+              >
+                <span
+                  class="font-display text-lg uppercase tracking-tight group-open:text-gold-500 transition-colors"
+                >
+                  Quais são as formas de pagamento?
+                </span>
+                <i
+                  data-lucide="chevron-down"
+                  class="w-5 h-5 transition-transform group-open:rotate-180"
+                ></i>
+              </summary>
+              <div class="p-6 pt-0 text-sm leading-relaxed opacity-80">
+                Aceitamos pagamento à vista com desconto especial (PIX ou
+                dinheiro) ou parcelado em até 12x no cartão de crédito. Também
+                trabalhamos com carnê próprio para facilitar seu investimento.
+                Entre em contato para conhecer as condições especiais
+                disponíveis no momento.
+              </div>
+            </details>
+
+            <!-- FAQ Item 5 -->
+            <details
+              class="faq-item group border border-white/10 rounded-lg overflow-hidden"
+            >
+              <summary
+                class="flex items-center justify-between p-6 cursor-pointer hover:bg-dark-900 transition-colors"
+              >
+                <span
+                  class="font-display text-lg uppercase tracking-tight group-open:text-gold-500 transition-colors"
+                >
+                  Preciso ter experiência prévia?
+                </span>
+                <i
+                  data-lucide="chevron-down"
+                  class="w-5 h-5 transition-transform group-open:rotate-180"
+                ></i>
+              </summary>
+              <div class="p-6 pt-0 text-sm leading-relaxed opacity-80">
+                Não! Nosso curso é completo do zero ao avançado. Começamos pelos
+                fundamentos e evoluímos gradualmente. Tanto iniciantes quanto
+                barbeiros que querem se profissionalizar são bem-vindos. Nossa
+                metodologia se adapta ao nível de cada aluno.
+              </div>
+            </details>
+
+            <!-- FAQ Item 6 -->
+            <details
+              class="faq-item group border border-white/10 rounded-lg overflow-hidden"
+            >
+              <summary
+                class="flex items-center justify-between p-6 cursor-pointer hover:bg-dark-900 transition-colors"
+              >
+                <span
+                  class="font-display text-lg uppercase tracking-tight group-open:text-gold-500 transition-colors"
+                >
+                  Como funciona a aula prática?
+                </span>
+                <i
+                  data-lucide="chevron-down"
+                  class="w-5 h-5 transition-transform group-open:rotate-180"
+                ></i>
+              </summary>
+              <div class="p-6 pt-0 text-sm leading-relaxed opacity-80">
+                A prática começa desde a primeira semana. Você treina em bonecos
+                profissionais, depois em modelos reais supervisionados por
+                instrutores. Turmas pequenas (máximo 12 alunos) garantem atenção
+                individualizada. Ambiente real de barbearia para você se sentir
+                no mercado desde o início.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contato / CTA Final -->
+      <section id="contato" class="py-16 md:py-24 px-6 md:px-12">
+        <div
+          class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+        >
+          <div>
+            <span
+              class="text-xs uppercase tracking-widest opacity-50 block mb-6"
+              >(Últimas Vagas)</span
+            >
+            <h2
+              class="font-display text-5xl md:text-7xl uppercase tracking-tighter leading-none mb-8"
+            >
+              Garanta<br />
+              Sua Vaga<br />
+              <span class="text-gold-500">Agora</span>
+            </h2>
+            <p class="text-lg opacity-70 mb-8 leading-relaxed">
+              Turmas limitadas a 12 alunos para garantir qualidade no ensino.
+              Preencha o formulário ou entre em contato via WhatsApp.
+            </p>
+
+            <div class="flex flex-col gap-4 mb-12">
+              <a
+                href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20curso%20de%20barbearia"
+                target="_blank"
+                class="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold uppercase text-sm tracking-widest hover:bg-[#1fb855] transition-all shadow-lg"
+              >
+                <i data-lucide="message-circle" class="w-5 h-5"></i>
+                <span>Falar no WhatsApp</span>
+              </a>
+              <a
+                href="https://instagram.com/brosclub"
+                target="_blank"
+                class="inline-flex items-center gap-3 border border-white/20 text-white px-8 py-4 rounded-full font-bold uppercase text-sm tracking-widest hover:bg-white hover:text-dark-900 transition-all"
+              >
+                <i data-lucide="instagram" class="w-5 h-5"></i>
+                <span>Seguir no Instagram</span>
+              </a>
+            </div>
+
+            <div class="border-t border-white/10 pt-8">
+              <p class="text-xs uppercase tracking-widest opacity-50 mb-4">
+                Endereço
+              </p>
+              <p class="opacity-70">
+                Rua da Barbearia, 123<br />
+                Centro - São Paulo/SP<br />
+                CEP 01234-567
+              </p>
+            </div>
+          </div>
+
+          <div
+            class="bg-dark-800 border border-white/10 p-8 md:p-12 rounded-lg"
+          >
+            <h3 class="font-display text-2xl uppercase tracking-tight mb-6">
+              Solicite Mais Informações
+            </h3>
+
+            <form id="contact-form" class="space-y-6">
+              <div class="group relative">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  class="peer block w-full bg-transparent border-0 border-b border-white/20 py-3 px-0 text-white placeholder-transparent focus:outline-none focus:border-gold-500 transition-colors"
+                  placeholder="Nome completo"
+                />
+                <label
+                  for="name"
+                  class="absolute left-0 -top-3.5 text-xs uppercase tracking-widest text-white/50 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-gold-500"
+                >
+                  Nome completo
+                </label>
+              </div>
+
+              <div class="group relative">
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  required
+                  class="peer block w-full bg-transparent border-0 border-b border-white/20 py-3 px-0 text-white placeholder-transparent focus:outline-none focus:border-gold-500 transition-colors"
+                  placeholder="WhatsApp"
+                />
+                <label
+                  for="phone"
+                  class="absolute left-0 -top-3.5 text-xs uppercase tracking-widest text-white/50 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-xs peer-focus:text-gold-500"
+                >
+                  WhatsApp
+                </label>
+              </div>
+
+              <div class="group relative">
+                <select
+                  id="period"
+                  name="period"
+                  required
+                  class="peer block w-full bg-transparent border-0 border-b border-white/20 py-3 px-0 text-white focus:outline-none focus:border-gold-500 transition-colors appearance-none cursor-pointer"
+                >
+                  <option value="" disabled selected class="bg-dark-800">
+                    Selecione
+                  </option>
+                  <option value="manha" class="bg-dark-800">
+                    Manhã (9h às 12h)
+                  </option>
+                  <option value="tarde" class="bg-dark-800">
+                    Tarde (14h às 17h)
+                  </option>
+                  <option value="noite" class="bg-dark-800">
+                    Noite (19h às 22h)
+                  </option>
+                </select>
+                <label
+                  for="period"
+                  class="absolute left-0 -top-3.5 text-xs uppercase tracking-widest text-white/50"
+                >
+                  Período de interesse
+                </label>
+                <i
+                  data-lucide="chevron-down"
+                  class="absolute right-0 top-3 w-5 h-5 text-white/50 pointer-events-none"
+                ></i>
+              </div>
+
+              <div class="group relative">
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  class="peer block w-full bg-transparent border border-white/20 rounded py-3 px-4 text-white placeholder-transparent focus:outline-none focus:border-gold-500 transition-colors resize-none"
+                  placeholder="Mensagem (opcional)"
+                ></textarea>
+                <label
+                  for="message"
+                  class="absolute left-4 -top-3 bg-dark-800 px-2 text-xs uppercase tracking-widest text-white/50 peer-focus:text-gold-500"
+                >
+                  Mensagem (opcional)
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                id="submit-btn"
+                class="w-full bg-gold-500 text-dark-900 py-4 px-8 rounded-full font-bold uppercase text-sm tracking-widest hover:bg-gold-400 transition-all shadow-lg flex items-center justify-center gap-3"
+              >
+                <span id="btn-text">Enviar Solicitação</span>
+                <i data-lucide="send" id="btn-icon" class="w-5 h-5"></i>
+              </button>
+            </form>
+
+            <div
+              id="success-message"
+              class="hidden mt-8 p-6 bg-gold-500/10 border border-gold-500/30 rounded-lg"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <i data-lucide="check-circle" class="w-6 h-6 text-gold-500"></i>
+                <h4
+                  class="font-display text-xl uppercase tracking-tight text-gold-500"
+                >
+                  Mensagem Enviada!
+                </h4>
+              </div>
+              <p class="text-sm opacity-80">
+                Obrigado pelo interesse! Entraremos em contato em breve via
+                WhatsApp para agendar sua visita e tirar todas as dúvidas.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark-800 border-t border-white/10 py-12 px-6 md:px-12">
+      <div class="max-w-7xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row justify-between items-center gap-8 mb-8"
+        >
+          <div class="flex items-center gap-3">
+            <div
+              class="w-12 h-12 bg-gold-500 text-dark-900 flex items-center justify-center font-display font-bold text-2xl rounded"
+            >
+              BC
+            </div>
+            <div>
+              <div
+                class="font-display font-bold text-xl uppercase tracking-tight"
+              >
+                Bros Club
+              </div>
+              <div class="text-xs uppercase tracking-widest opacity-50">
+                Barber School
+              </div>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-6">
+            <a
+              href="https://instagram.com/brosclub"
+              target="_blank"
+              class="text-white/50 hover:text-gold-500 transition-colors"
+            >
+              <i data-lucide="instagram" class="w-6 h-6"></i>
+            </a>
+            <a
+              href="https://wa.me/5511999999999"
+              target="_blank"
+              class="text-white/50 hover:text-gold-500 transition-colors"
+            >
+              <i data-lucide="message-circle" class="w-6 h-6"></i>
+            </a>
+            <a
+              href="mailto:contato@brosclub.com.br"
+              class="text-white/50 hover:text-gold-500 transition-colors"
+            >
+              <i data-lucide="mail" class="w-6 h-6"></i>
+            </a>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs uppercase tracking-widest opacity-50"
+        >
+          <p>© 2026 Bros Club Barber School. Todos os direitos reservados.</p>
+          <div class="flex gap-6">
+            <a href="#" class="hover:text-gold-500 transition-colors"
+              >Política de Privacidade</a
+            >
+            <a href="#" class="hover:text-gold-500 transition-colors"
+              >Termos de Uso</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/5511999999999?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20o%20curso%20de%20barbearia"
+      target="_blank"
+      class="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] text-white rounded-full flex items-center justify-center shadow-2xl hover:scale-110 transition-transform fab-container"
+      aria-label="Falar no WhatsApp"
+    >
+      <i data-lucide="message-circle" class="w-8 h-8"></i>
+    </a>
+
+    <script>
+      // Init Lucide Icons
+      lucide.createIcons();
+
+      // Menu Toggle
+      function toggleMenu() {
+        const menu = document.getElementById("menu-overlay");
+        menu.classList.toggle("translate-y-full");
+
+        if (!menu.classList.contains("translate-y-full")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      }
+
+      // Toast Notification
+      function showToast(msg) {
+        const toast = document.getElementById("toast");
+        const message = document.getElementById("toast-message");
+        message.textContent = msg;
+        toast.classList.remove("translate-x-full");
+
+        setTimeout(() => {
+          toast.classList.add("translate-x-full");
+        }, 3000);
+      }
+
+      // Form Handling
+      const form = document.getElementById("contact-form");
+      const submitBtn = document.getElementById("submit-btn");
+      const btnText = document.getElementById("btn-text");
+      const btnIcon = document.getElementById("btn-icon");
+      const successMsg = document.getElementById("success-message");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        // Loading State
+        btnText.textContent = "Enviando...";
+        submitBtn.classList.add("opacity-70", "pointer-events-none");
+        btnIcon.setAttribute("data-lucide", "loader-2");
+        btnIcon.classList.add("animate-spin");
+        lucide.createIcons();
+
+        // Simulate form submission (replace with actual backend)
+        setTimeout(() => {
+          form.classList.add("hidden");
+          successMsg.classList.remove("hidden");
+          showToast("Mensagem enviada com sucesso!");
+
+          // Reset form after 5 seconds
+          setTimeout(() => {
+            form.reset();
+            form.classList.remove("hidden");
+            successMsg.classList.add("hidden");
+            btnText.textContent = "Enviar Solicitação";
+            submitBtn.classList.remove("opacity-70", "pointer-events-none");
+            btnIcon.setAttribute("data-lucide", "send");
+            btnIcon.classList.remove("animate-spin");
+            lucide.createIcons();
+          }, 5000);
+        }, 1500);
+      });
+
+      // Smooth Scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({
+              behavior: "smooth",
+              block: "start",
+            });
+          }
+        });
+      });
+    </script>
+    <script id="dhws-dataInjector" src="/public/dhws-data-injector.js"></script>
+  </body>
+</html>
