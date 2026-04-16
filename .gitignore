@@ -4,8 +4,9 @@ node_modules
 package-lock.json
 render.js
 DOCUMENTACAO.md
-index.html
-css/main.css
-script.js
+index-dev.html
+css/main-dev.css
+script-dev.js
 package.json
 assets
+.gitignore
