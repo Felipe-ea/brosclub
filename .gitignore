@@ -1,8 +1,4 @@
-.DS_Store
-node_modules
-.idea
 package-lock.json
-render.js
 DOCUMENTACAO.md
 index-dev.html
 css/main-dev.css
